@@ -13,11 +13,18 @@ import { Observable } from 'rxjs/Observable';
 export class AppComponent implements OnInit {
 
   todos: TodoItem[];
+  newTodo: TodoItem;
+
   constructor(private todoSvc: TodoService) {
+    this.newTodo = new TodoItem();
   }
 
   ngOnInit(): void {
     this.todoSvc.GetTodos()
       .then(t => this.todos = t);
+  }
+
+  saveChanges(): void {
+    console.log(JSON.stringify(this.newTodo));
   }
 }
