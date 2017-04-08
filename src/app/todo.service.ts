@@ -9,13 +9,20 @@ export class TodoService {
   constructor(private http: Http) {
   }
 
-  GetTodos(): Promise<TodoItem[]> {
+  getTodos(): Promise<TodoItem[]> {
     return this.http.get(this.baseUrl)
       .toPromise()
       .then(response => {
         const r = response.json() as TodoItem[];
         return r;
       })
+      .catch(this.handleError);
+  }
+
+  saveTodo(newTodo: TodoItem): void {
+    this.http.post(this.baseUrl, newTodo)
+      .toPromise()
+      .then(x => console.log(x))
       .catch(this.handleError);
   }
 

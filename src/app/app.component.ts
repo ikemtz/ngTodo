@@ -14,17 +14,22 @@ export class AppComponent implements OnInit {
 
   todos: TodoItem[];
   newTodo: TodoItem;
+  addClicked: boolean;
 
   constructor(private todoSvc: TodoService) {
     this.newTodo = new TodoItem();
   }
 
   ngOnInit(): void {
-    this.todoSvc.GetTodos()
+    this.addClicked = false;
+    this.todoSvc.getTodos()
       .then(t => this.todos = t);
   }
 
   saveChanges(): void {
-    console.log(JSON.stringify(this.newTodo));
+    this.addClicked = false;
+    this.todos.push(this.newTodo);
+    this.todoSvc.saveTodo(this.newTodo);
+    this.newTodo = new TodoItem();
   }
 }
