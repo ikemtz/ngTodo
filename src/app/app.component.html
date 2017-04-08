@@ -1,3 +1,16 @@
-<ul>
-  <li *ngFor="let todo of todos">{{todo.title}}</li>
-</ul>
+<div class="container">
+  <div>
+    <div *ngFor="let todo of todos; let i=index">
+      <div class="card">
+        <div class="card-header">
+          <h5 class="mb-0">
+            <a class="primary" href="javascript:void(0)" (click)="todo.show = !todo.show">{{todo.title}}</a>
+          </h5>
+        </div>
+        <div class="collapse" [ngClass]="{'show': todo.show}">
+          <div class="card-block">{{todo.description}}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
