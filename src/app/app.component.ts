@@ -3,7 +3,6 @@ import { TodoService } from './todo.service';
 import { OnInit } from '@angular/core';
 import { HttpModule } from '@angular/http';
 import { TodoItem } from './todo-item';
-import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'app-root',
