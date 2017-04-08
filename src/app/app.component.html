@@ -1,16 +1,19 @@
 <div class="container">
-  <div>
-    <div *ngFor="let todo of todos; let i=index">
-      <div class="card">
-        <div class="card-header">
-          <h5 class="mb-0">
-            <a class="primary" href="javascript:void(0)" (click)="todo.show = !todo.show">{{todo.title}}</a>
-          </h5>
-        </div>
-        <div class="collapse" [ngClass]="{'show': todo.show}">
-          <div class="card-block">{{todo.description}}</div>
-        </div>
+
+  <div *ngFor="let todo of todos; let i=index">
+    <div class="card">
+      <div class="card-header">
+        <h5 class="mb-0">
+          <a class="primary" href="javascript:void(0)" (click)="todo.show = !todo.show">{{todo.title}}</a>
+        </h5>
+      </div>
+      <div class="collapse" [ngClass]="{'show': todo.show}">
+        <div class="card-block">{{todo.description}}</div>
       </div>
     </div>
+  </div>
+  <button type="button" (click)="addClicked=true" class="btn btn-primary btn-block mt-5">Add Todo</button>
+  <div *ngIf="addClicked">
+    Add button clicked!!!
   </div>
 </div>
