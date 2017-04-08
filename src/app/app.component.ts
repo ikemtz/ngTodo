@@ -32,4 +32,9 @@ export class AppComponent implements OnInit {
     this.todoSvc.saveTodo(this.newTodo);
     this.newTodo = new TodoItem();
   }
+
+  delete(todo: TodoItem, index: number): void {
+    this.todoSvc.deleteTodo(todo.id);
+    this.todos.splice(index, 1);
+  }
 }

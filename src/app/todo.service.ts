@@ -26,6 +26,13 @@ export class TodoService {
       .catch(this.handleError);
   }
 
+  deleteTodo(id: number): void {
+    this.http.delete(this.baseUrl + '/' + id)
+      .toPromise()
+      .then(x => console.log(x))
+      .catch(this.handleError);
+  }
+
   private handleError(error: Response | any) {
     // In a real world app, you might use a remote logging infrastructure
     let errMsg: string;
